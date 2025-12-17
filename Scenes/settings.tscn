@@ -1,0 +1,86 @@
+[gd_scene load_steps=4 format=3 uid="uid://b44ji6rxv5y0l"]
+
+[ext_resource type="Script" uid="uid://dx532gtw8dj72" path="res://Scripts/settings.gd" id="1_lhmql"]
+[ext_resource type="LabelSettings" uid="uid://cb6xhosfnxffi" path="res://header.tres" id="2_aaqfp"]
+[ext_resource type="PackedScene" uid="uid://d1rupxl1ksexw" path="res://Scenes/loading_circle.tscn" id="3_j2dne"]
+
+[node name="Settings" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_behavior_recursive = 1
+script = ExtResource("1_lhmql")
+
+[node name="MainContents" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 16
+
+[node name="PanelContainer" type="PanelContainer" parent="MainContents"]
+layout_mode = 2
+
+[node name="HeaderMargin" type="MarginContainer" parent="MainContents/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 10
+
+[node name="Header" type="Label" parent="MainContents/PanelContainer/HeaderMargin"]
+layout_mode = 2
+text = "Settings"
+label_settings = ExtResource("2_aaqfp")
+
+[node name="ScrollMargin" type="MarginContainer" parent="MainContents"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 30
+
+[node name="SettingsScroller" type="ScrollContainer" parent="MainContents/ScrollMargin"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Settings" type="VBoxContainer" parent="MainContents/ScrollMargin/SettingsScroller"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 30
+
+[node name="Username" type="HBoxContainer" parent="MainContents/ScrollMargin/SettingsScroller/Settings"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="MainContents/ScrollMargin/SettingsScroller/Settings/Username"]
+layout_mode = 2
+text = "Username"
+
+[node name="LineEdit" type="LineEdit" parent="MainContents/ScrollMargin/SettingsScroller/Settings/Username"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_behavior_recursive = 2
+placeholder_text = "Enter a username..."
+
+[node name="LoginButton" type="Button" parent="MainContents/ScrollMargin/SettingsScroller/Settings"]
+layout_mode = 2
+size_flags_horizontal = 4
+focus_mode = 0
+text = "Log in"
+
+[node name="Spinbox" parent="MainContents/ScrollMargin/SettingsScroller/Settings/LoginButton" instance=ExtResource("3_j2dne")]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+offset_left = 25.0
+offset_right = 83.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[connection signal="pressed" from="MainContents/ScrollMargin/SettingsScroller/Settings/LoginButton" to="." method="_on_login_button_pressed"]

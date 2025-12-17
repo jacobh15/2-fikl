@@ -1,0 +1,32 @@
+[gd_resource type="Theme" load_steps=10 format=3 uid="uid://du6m4vbet3k56"]
+
+[ext_resource type="StyleBox" uid="uid://b354hvbi4xe3f" path="res://Styles/main_widget_disabled.tres" id="1_fadbd"]
+[ext_resource type="StyleBox" uid="uid://btuvqihqt1cca" path="res://Styles/main_widget_normal.tres" id="2_1ey0f"]
+[ext_resource type="StyleBox" uid="uid://re1kfxr85xol" path="res://Styles/main_widget_active.tres" id="3_np86o"]
+[ext_resource type="Texture2D" uid="uid://ci5gbjx1qm8rt" path="res://Textures/Grabber64.png" id="4_fadbd"]
+[ext_resource type="Texture2D" uid="uid://b26p6eu1rxnle" path="res://Textures/GrabberDisabled64.png" id="5_1ey0f"]
+[ext_resource type="StyleBox" uid="uid://c84oh2mesai54" path="res://Styles/slider_style_selected.tres" id="5_54su2"]
+[ext_resource type="StyleBox" uid="uid://c7rdhoierylq6" path="res://Styles/slider_style.tres" id="6_rbf1t"]
+[ext_resource type="FontFile" uid="uid://c4e8e4vfigf0l" path="res://Fonts/Unkempt-Regular.ttf" id="7_0kka5"]
+[ext_resource type="StyleBox" uid="uid://c2f1tq35e34m6" path="res://Styles/header_panel_style.tres" id="8_jorxc"]
+
+[resource]
+default_font = ExtResource("7_0kka5")
+default_font_size = 96
+Button/styles/disabled = ExtResource("1_fadbd")
+Button/styles/hover = ExtResource("2_1ey0f")
+Button/styles/normal = ExtResource("2_1ey0f")
+Button/styles/pressed = ExtResource("3_np86o")
+HSlider/icons/grabber = ExtResource("4_fadbd")
+HSlider/icons/grabber_disabled = ExtResource("5_1ey0f")
+HSlider/icons/grabber_highlight = ExtResource("4_fadbd")
+HSlider/styles/grabber_area = ExtResource("5_54su2")
+HSlider/styles/grabber_area_highlight = ExtResource("5_54su2")
+HSlider/styles/slider = ExtResource("6_rbf1t")
+Label/colors/font_color = Color(0.53333336, 0.83137256, 0.59607846, 1)
+Label/font_sizes/font_size = 64
+Label/fonts/font = ExtResource("7_0kka5")
+LineEdit/colors/font_color = Color(1, 0.96862745, 0.972549, 1)
+LineEdit/styles/focus = ExtResource("2_1ey0f")
+LineEdit/styles/normal = ExtResource("2_1ey0f")
+PanelContainer/styles/panel = ExtResource("8_jorxc")

@@ -1,0 +1,164 @@
+[gd_scene load_steps=20 format=3 uid="uid://hh5r4qm00qsj"]
+
+[ext_resource type="Script" uid="uid://cpfjl2tont6lm" path="res://Scripts/main.gd" id="1_d1ilt"]
+[ext_resource type="Theme" uid="uid://r2ps60h61gx5" path="res://main_theme.tres" id="1_hptm8"]
+[ext_resource type="Script" uid="uid://bypa2e1l2lfb8" path="res://Scripts/tab_switch.gd" id="2_d1ilt"]
+[ext_resource type="PackedScene" uid="uid://db5mlm2rsgar8" path="res://Scenes/selections.tscn" id="3_d1ilt"]
+[ext_resource type="PackedScene" uid="uid://cro2314fsdhub" path="res://Scenes/decisions.tscn" id="4_6iyac"]
+[ext_resource type="PackedScene" uid="uid://bkf4txolx8ffp" path="res://Scenes/options.tscn" id="5_fdnlq"]
+[ext_resource type="PackedScene" uid="uid://dpea8vnvbfvhu" path="res://Scenes/constraints.tscn" id="6_jkdf5"]
+[ext_resource type="PackedScene" uid="uid://b44ji6rxv5y0l" path="res://Scenes/settings.tscn" id="7_wsu2k"]
+[ext_resource type="Theme" uid="uid://b3vmh6uah3mst" path="res://TabBar/theme.tres" id="8_h1bgf"]
+[ext_resource type="Script" uid="uid://bvquq2mf6v1so" path="res://Scripts/tab_bar.gd" id="9_b3802"]
+[ext_resource type="ButtonGroup" uid="uid://c8klwrc3kguq4" path="res://TabBar/tab_button_group.tres" id="10_fevyy"]
+[ext_resource type="PackedScene" uid="uid://cfxixa14altv8" path="res://Scenes/option_editor.tscn" id="12_fdnlq"]
+[ext_resource type="Texture2D" uid="uid://f4vy1hmhe47q" path="res://Textures/Die144.png" id="12_fevyy"]
+[ext_resource type="PackedScene" uid="uid://ox21ed4m0tw0" path="res://Scenes/decision_editor.tscn" id="13_fdnlq"]
+[ext_resource type="Texture2D" uid="uid://c4aj5y7pyfi8d" path="res://Textures/Fork144.png" id="13_hibaj"]
+[ext_resource type="Texture2D" uid="uid://33qk424kp5xt" path="res://Textures/List144.png" id="14_pdsj5"]
+[ext_resource type="PackedScene" uid="uid://crdorlsp12qd3" path="res://Scenes/constraint_editor.tscn" id="14_wsu2k"]
+[ext_resource type="Texture2D" uid="uid://bjqshiv3cuk82" path="res://Textures/Lock144.png" id="15_ee4r6"]
+[ext_resource type="PackedScene" uid="uid://cp7cyfovupy74" path="res://Scenes/selection_editor.tscn" id="15_wsu2k"]
+
+[node name="Root" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+script = ExtResource("1_d1ilt")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 2
+color = Color(0.3137255, 0.31764707, 0.30980393, 1)
+
+[node name="TabContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Tabs" type="Control" parent="TabContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("1_hptm8")
+script = ExtResource("2_d1ilt")
+
+[node name="Selections" parent="TabContainer/Tabs" instance=ExtResource("3_d1ilt")]
+layout_mode = 1
+
+[node name="Decisions" parent="TabContainer/Tabs" instance=ExtResource("4_6iyac")]
+visible = false
+layout_mode = 1
+
+[node name="Options" parent="TabContainer/Tabs" instance=ExtResource("5_fdnlq")]
+visible = false
+layout_mode = 1
+
+[node name="Constraints" parent="TabContainer/Tabs" instance=ExtResource("6_jkdf5")]
+visible = false
+layout_mode = 1
+
+[node name="Settings" parent="TabContainer/Tabs" instance=ExtResource("7_wsu2k")]
+visible = false
+layout_mode = 1
+
+[node name="TabBar" type="HBoxContainer" parent="TabContainer"]
+layout_mode = 2
+theme = ExtResource("8_h1bgf")
+script = ExtResource("9_b3802")
+
+[node name="Selections" type="Button" parent="TabContainer/TabBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+toggle_mode = true
+button_pressed = true
+action_mode = 0
+button_group = ExtResource("10_fevyy")
+icon = ExtResource("12_fevyy")
+icon_alignment = 1
+
+[node name="Decisions" type="Button" parent="TabContainer/TabBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+toggle_mode = true
+action_mode = 0
+button_group = ExtResource("10_fevyy")
+icon = ExtResource("13_hibaj")
+icon_alignment = 1
+
+[node name="Options" type="Button" parent="TabContainer/TabBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+toggle_mode = true
+action_mode = 0
+button_group = ExtResource("10_fevyy")
+icon = ExtResource("14_pdsj5")
+icon_alignment = 1
+
+[node name="Constraints" type="Button" parent="TabContainer/TabBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+toggle_mode = true
+action_mode = 0
+button_group = ExtResource("10_fevyy")
+icon = ExtResource("15_ee4r6")
+icon_alignment = 1
+
+[node name="Settings" type="Button" parent="TabContainer/TabBar"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+toggle_mode = true
+action_mode = 0
+button_group = ExtResource("10_fevyy")
+text = "S"
+
+[node name="OptionEditor" parent="TabContainer" instance=ExtResource("12_fdnlq")]
+visible = false
+layout_mode = 2
+
+[node name="DecisionEditor" parent="TabContainer" instance=ExtResource("13_fdnlq")]
+visible = false
+layout_mode = 2
+
+[node name="ConstraintEditor" parent="TabContainer" instance=ExtResource("14_wsu2k")]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="SelectionEditor" parent="TabContainer" instance=ExtResource("15_wsu2k")]
+visible = false
+layout_mode = 2
+
+[connection signal="change_screen" from="TabContainer/Tabs" to="." method="_on_change_screen"]
+[connection signal="go_to_selection_editor" from="TabContainer/Tabs/Selections" to="." method="_on_change_screen"]
+[connection signal="open_decision_editor" from="TabContainer/Tabs/Decisions" to="." method="_on_change_screen"]
+[connection signal="go_back" from="TabContainer/Tabs/Options" to="." method="_on_change_screen"]
+[connection signal="open_option_editor" from="TabContainer/Tabs/Options" to="." method="_on_change_screen"]
+[connection signal="go_back" from="TabContainer/Tabs/Constraints" to="." method="_on_change_screen"]
+[connection signal="open_constraint_editor" from="TabContainer/Tabs/Constraints" to="." method="_on_change_screen"]
+[connection signal="change_tab" from="TabContainer/TabBar" to="TabContainer/Tabs" method="_on_tab_bar_change_tab"]
+[connection signal="go_back_after_creating" from="TabContainer/OptionEditor" to="." method="_on_change_screen"]
+[connection signal="go_back_after_discarding" from="TabContainer/OptionEditor" to="." method="_on_change_screen"]
+[connection signal="go_back_after_editing" from="TabContainer/OptionEditor" to="." method="_on_change_screen"]
+[connection signal="go_back_after_creating" from="TabContainer/DecisionEditor" to="." method="_on_change_screen"]
+[connection signal="go_back_after_discarding" from="TabContainer/DecisionEditor" to="." method="_on_change_screen"]
+[connection signal="go_back_after_editing" from="TabContainer/DecisionEditor" to="." method="_on_change_screen"]
+[connection signal="go_to_options_selector" from="TabContainer/DecisionEditor" to="." method="_on_change_screen"]
+[connection signal="go_back_after_creating" from="TabContainer/ConstraintEditor" to="." method="_on_change_screen"]
+[connection signal="go_back_after_discarding" from="TabContainer/ConstraintEditor" to="." method="_on_change_screen"]
+[connection signal="go_back_after_editing" from="TabContainer/ConstraintEditor" to="." method="_on_change_screen"]
+[connection signal="go_to_constraints_selector" from="TabContainer/ConstraintEditor" to="." method="_on_change_screen"]
+[connection signal="go_to_options_selector" from="TabContainer/ConstraintEditor" to="." method="_on_change_screen"]
+[connection signal="go_back" from="TabContainer/SelectionEditor" to="." method="_on_change_screen"]
+[connection signal="open_constraint_editor" from="TabContainer/SelectionEditor" to="." method="_on_change_screen"]
+[connection signal="open_constraints" from="TabContainer/SelectionEditor" to="." method="_on_change_screen"]

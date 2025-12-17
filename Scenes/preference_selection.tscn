@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://c16s6rxycn7r4"]
+
+[ext_resource type="Script" uid="uid://c8xx8u4wmv1nj" path="res://Scripts/update_slider_label.gd" id="1_lgcmb"]
+[ext_resource type="Theme" uid="uid://du6m4vbet3k56" path="res://main_option_editing_theme.tres" id="1_xd7mr"]
+[ext_resource type="Script" uid="uid://pi0b1peepvbi" path="res://Scripts/preference_selection.gd" id="2_18sht"]
+
+[node name="PreferenceSelection" type="HBoxContainer"]
+theme = ExtResource("1_xd7mr")
+script = ExtResource("2_18sht")
+
+[node name="Label" type="Label" parent="."]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+text = "15%"
+script = ExtResource("1_lgcmb")
+
+[node name="SliderMargin" type="MarginContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_right = 8
+
+[node name="PreferenceSlider" type="HSlider" parent="SliderMargin"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+focus_mode = 0
+mouse_filter = 1
+
+[connection signal="value_changed" from="SliderMargin/PreferenceSlider" to="." method="_on_preference_slider_value_changed"]
+[connection signal="value_changed" from="SliderMargin/PreferenceSlider" to="Label" method="_on_preference_slider_value_changed"]

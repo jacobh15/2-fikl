@@ -1,0 +1,111 @@
+[gd_scene load_steps=6 format=3 uid="uid://ox21ed4m0tw0"]
+
+[ext_resource type="Theme" uid="uid://r2ps60h61gx5" path="res://main_theme.tres" id="1_qopqm"]
+[ext_resource type="Theme" uid="uid://bhkvjdraqkwk6" path="res://text_button_theme.tres" id="2_7x4rc"]
+[ext_resource type="Script" uid="uid://c3g6vtbjdtfry" path="res://Scripts/decision_editor.gd" id="2_wuhbq"]
+[ext_resource type="LabelSettings" uid="uid://cb6xhosfnxffi" path="res://header.tres" id="3_wuhbq"]
+[ext_resource type="StyleBox" uid="uid://b8kevjxltyj7d" path="res://Styles/decision_options_panel_style.tres" id="5_wuhbq"]
+
+[node name="DecisionEditor" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+theme = ExtResource("1_qopqm")
+script = ExtResource("2_wuhbq")
+
+[node name="HeaderPanel" type="PanelContainer" parent="."]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HeaderPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 30
+
+[node name="Header" type="HBoxContainer" parent="HeaderPanel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 21
+
+[node name="BackButton" type="Button" parent="HeaderPanel/MarginContainer/Header"]
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("2_7x4rc")
+text = "<"
+
+[node name="Header" type="Label" parent="HeaderPanel/MarginContainer/Header"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "New Decision"
+label_settings = ExtResource("3_wuhbq")
+
+[node name="ContentMargin" type="MarginContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+
+[node name="Content" type="VBoxContainer" parent="ContentMargin"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="DoneButton" type="Button" parent="ContentMargin/Content"]
+layout_mode = 2
+size_flags_horizontal = 4
+focus_mode = 0
+text = "Tap to create"
+
+[node name="NameEditor" type="LineEdit" parent="ContentMargin/Content"]
+layout_mode = 2
+placeholder_text = "Enter decision name"
+
+[node name="PrefLabel" type="Label" parent="ContentMargin/Content"]
+layout_mode = 2
+text = "Select options"
+horizontal_alignment = 1
+
+[node name="MessageLabel" type="Label" parent="ContentMargin/Content"]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7372549, 0.42352942, 0.14509805, 1)
+horizontal_alignment = 1
+
+[node name="ContentMargin" type="MarginContainer" parent="ContentMargin/Content"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 6
+
+[node name="OptionsPanel" type="PanelContainer" parent="ContentMargin/Content/ContentMargin"]
+layout_mode = 2
+theme_override_styles/panel = ExtResource("5_wuhbq")
+
+[node name="OptionsContent" type="VBoxContainer" parent="ContentMargin/Content/ContentMargin/OptionsPanel"]
+layout_mode = 2
+
+[node name="AddOptionsButton" type="Button" parent="ContentMargin/Content/ContentMargin/OptionsPanel/OptionsContent"]
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("2_7x4rc")
+theme_override_font_sizes/font_size = 144
+text = "+"
+
+[node name="OptionsScroller" type="ScrollContainer" parent="ContentMargin/Content/ContentMargin/OptionsPanel/OptionsContent"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Options" type="VBoxContainer" parent="ContentMargin/Content/ContentMargin/OptionsPanel/OptionsContent/OptionsScroller"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 16
+
+[connection signal="pressed" from="HeaderPanel/MarginContainer/Header/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="ContentMargin/Content/DoneButton" to="." method="_on_done_button_pressed"]
+[connection signal="text_changed" from="ContentMargin/Content/NameEditor" to="." method="_on_name_editor_text_changed"]
+[connection signal="pressed" from="ContentMargin/Content/ContentMargin/OptionsPanel/OptionsContent/AddOptionsButton" to="." method="_on_add_options_button_pressed"]

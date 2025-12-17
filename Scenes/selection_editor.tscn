@@ -1,0 +1,135 @@
+[gd_scene load_steps=7 format=3 uid="uid://cp7cyfovupy74"]
+
+[ext_resource type="Theme" uid="uid://r2ps60h61gx5" path="res://main_theme.tres" id="1_rachc"]
+[ext_resource type="Script" uid="uid://ciwmke0dpfgoe" path="res://Scripts/selection_editor.gd" id="2_rp03h"]
+[ext_resource type="Theme" uid="uid://bhkvjdraqkwk6" path="res://text_button_theme.tres" id="2_si02m"]
+[ext_resource type="LabelSettings" uid="uid://cb6xhosfnxffi" path="res://header.tres" id="3_rp03h"]
+[ext_resource type="StyleBox" uid="uid://b8kevjxltyj7d" path="res://Styles/decision_options_panel_style.tres" id="4_n10x8"]
+[ext_resource type="PackedScene" uid="uid://w2qx2n1s01dq" path="res://Scenes/show_choice_popup.tscn" id="6_rp03h"]
+
+[node name="SelectionEditor" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+theme = ExtResource("1_rachc")
+script = ExtResource("2_rp03h")
+
+[node name="SelectionHistory" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HeaderPanel" type="PanelContainer" parent="SelectionHistory"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="SelectionHistory/HeaderPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 30
+
+[node name="Header" type="HBoxContainer" parent="SelectionHistory/HeaderPanel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 21
+
+[node name="BackButton" type="Button" parent="SelectionHistory/HeaderPanel/MarginContainer/Header"]
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("2_si02m")
+text = "<"
+
+[node name="Header" type="Label" parent="SelectionHistory/HeaderPanel/MarginContainer/Header"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "New Selection"
+label_settings = ExtResource("3_rp03h")
+
+[node name="ContentMargin" type="MarginContainer" parent="SelectionHistory"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+
+[node name="Content" type="VBoxContainer" parent="SelectionHistory/ContentMargin"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="DoneButton" type="Button" parent="SelectionHistory/ContentMargin/Content"]
+layout_mode = 2
+size_flags_horizontal = 4
+focus_mode = 0
+text = "Make a choice!"
+
+[node name="DecisionButton" type="OptionButton" parent="SelectionHistory/ContentMargin/Content"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+selected = 0
+item_count = 1
+popup/item_0/text = "Set Decision"
+popup/item_0/id = 0
+popup/item_0/separator = true
+
+[node name="ConstraintsLabel" type="Label" parent="SelectionHistory/ContentMargin/Content"]
+layout_mode = 2
+text = "Add constraints"
+horizontal_alignment = 1
+
+[node name="MessageLabel" type="Label" parent="SelectionHistory/ContentMargin/Content"]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7372549, 0.42352942, 0.14509805, 1)
+horizontal_alignment = 1
+
+[node name="ContentMargin" type="MarginContainer" parent="SelectionHistory/ContentMargin/Content"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 6
+
+[node name="ConstraintsPanel" type="PanelContainer" parent="SelectionHistory/ContentMargin/Content/ContentMargin"]
+layout_mode = 2
+theme_override_styles/panel = ExtResource("4_n10x8")
+
+[node name="ConstraintsContent" type="VBoxContainer" parent="SelectionHistory/ContentMargin/Content/ContentMargin/ConstraintsPanel"]
+layout_mode = 2
+
+[node name="AddConstrarintsButton" type="Button" parent="SelectionHistory/ContentMargin/Content/ContentMargin/ConstraintsPanel/ConstraintsContent"]
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("2_si02m")
+theme_override_font_sizes/font_size = 144
+text = "+"
+
+[node name="ConstraintsScroller" type="ScrollContainer" parent="SelectionHistory/ContentMargin/Content/ContentMargin/ConstraintsPanel/ConstraintsContent"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Constraints" type="VBoxContainer" parent="SelectionHistory/ContentMargin/Content/ContentMargin/ConstraintsPanel/ConstraintsContent/ConstraintsScroller"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 16
+
+[node name="ShowChoicePopup" parent="." instance=ExtResource("6_rp03h")]
+process_mode = 3
+visible = false
+layout_mode = 1
+offset_top = -138.0
+offset_bottom = 138.0
+
+[connection signal="pressed" from="SelectionHistory/HeaderPanel/MarginContainer/Header/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="SelectionHistory/ContentMargin/Content/DoneButton" to="." method="_on_done_button_pressed"]
+[connection signal="item_selected" from="SelectionHistory/ContentMargin/Content/DecisionButton" to="." method="_on_decision_button_item_selected"]
+[connection signal="pressed" from="SelectionHistory/ContentMargin/Content/ContentMargin/ConstraintsPanel/ConstraintsContent/AddConstrarintsButton" to="." method="_on_add_constrarints_button_pressed"]
+[connection signal="done_clicked" from="ShowChoicePopup" to="." method="_on_show_choice_popup_done_clicked"]

@@ -1,0 +1,103 @@
+[gd_scene load_steps=6 format=3 uid="uid://bkf4txolx8ffp"]
+
+[ext_resource type="Theme" uid="uid://bhkvjdraqkwk6" path="res://text_button_theme.tres" id="1_kftxf"]
+[ext_resource type="LabelSettings" uid="uid://cb6xhosfnxffi" path="res://header.tres" id="1_qyyw6"]
+[ext_resource type="Script" uid="uid://sxp0jawxuojc" path="res://Scripts/options.gd" id="1_ww8vx"]
+[ext_resource type="PackedScene" uid="uid://miu18qm6af1r" path="res://Scenes/search_container.tscn" id="4_ww8vx"]
+[ext_resource type="PackedScene" uid="uid://cdgn7frptj7kj" path="res://Scenes/confirm_delete_popup.tscn" id="5_kftxf"]
+
+[node name="Options" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ww8vx")
+
+[node name="MainContents" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 32
+
+[node name="HeaderPanel" type="PanelContainer" parent="MainContents"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MainContents/HeaderPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 30
+
+[node name="Header" type="HBoxContainer" parent="MainContents/HeaderPanel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 21
+
+[node name="BackButton" type="Button" parent="MainContents/HeaderPanel/MarginContainer/Header"]
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("1_kftxf")
+text = "<"
+
+[node name="Header" type="Label" parent="MainContents/HeaderPanel/MarginContainer/Header"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Options"
+label_settings = ExtResource("1_qyyw6")
+
+[node name="NewOptionMargin" type="MarginContainer" parent="MainContents/HeaderPanel/MarginContainer/Header"]
+layout_mode = 2
+theme_override_constants/margin_right = 25
+
+[node name="NewOptionButton" type="Button" parent="MainContents/HeaderPanel/MarginContainer/Header/NewOptionMargin"]
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("1_kftxf")
+text = "+"
+
+[node name="OptionsMargin" type="MarginContainer" parent="MainContents"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_right = 30
+
+[node name="OptionsContent" type="VBoxContainer" parent="MainContents/OptionsMargin"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="UseSelectedButton" type="Button" parent="MainContents/OptionsMargin/OptionsContent"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Use Selected"
+
+[node name="SearchContainer" parent="MainContents/OptionsMargin/OptionsContent" instance=ExtResource("4_ww8vx")]
+layout_mode = 2
+
+[node name="OptionsScroller" type="ScrollContainer" parent="MainContents/OptionsMargin/OptionsContent"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Options" type="VBoxContainer" parent="MainContents/OptionsMargin/OptionsContent/OptionsScroller"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 16
+
+[node name="ConfirmDeletePopup" parent="." instance=ExtResource("5_kftxf")]
+layout_mode = 1
+offset_left = 0.0
+offset_top = -181.5
+offset_right = 0.0
+offset_bottom = 181.5
+
+[connection signal="pressed" from="MainContents/HeaderPanel/MarginContainer/Header/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="MainContents/HeaderPanel/MarginContainer/Header/NewOptionMargin/NewOptionButton" to="." method="_on_new_option_button_pressed"]
+[connection signal="pressed" from="MainContents/OptionsMargin/OptionsContent/UseSelectedButton" to="." method="_on_use_selected_button_pressed"]
+[connection signal="search_changed" from="MainContents/OptionsMargin/OptionsContent/SearchContainer" to="." method="_on_search_container_search_changed"]
+[connection signal="no_pressed" from="ConfirmDeletePopup" to="." method="_on_no_button_pressed"]
+[connection signal="yes_pressed" from="ConfirmDeletePopup" to="." method="_on_yes_button_pressed"]

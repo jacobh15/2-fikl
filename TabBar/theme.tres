@@ -1,0 +1,14 @@
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://b3vmh6uah3mst"]
+
+[ext_resource type="StyleBox" uid="uid://b3d1kk3o0dc5d" path="res://TabBar/button_style_normal.tres" id="1_hr2ms"]
+[ext_resource type="FontFile" uid="uid://xs4i0gfek07a" path="res://Fonts/Unkempt-Bold.ttf" id="1_wqudw"]
+[ext_resource type="StyleBox" uid="uid://ckghoih4tixdm" path="res://TabBar/button_style_pressed.tres" id="2_hiujp"]
+
+[resource]
+default_font = ExtResource("1_wqudw")
+default_font_size = 64
+/colors/Color = Color(0.05882353, 0.30980393, 0, 1)
+Button/styles/hover = ExtResource("1_hr2ms")
+Button/styles/normal = ExtResource("1_hr2ms")
+Button/styles/pressed = ExtResource("2_hiujp")
+HBoxContainer/constants/separation = 0

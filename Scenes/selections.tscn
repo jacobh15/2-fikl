@@ -1,0 +1,50 @@
+[gd_scene load_steps=2 format=3 uid="uid://db5mlm2rsgar8"]
+
+[ext_resource type="Script" uid="uid://cfljaqpd7ktiq" path="res://Scripts/selections.gd" id="1_nniss"]
+
+[node name="Selections" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_nniss")
+
+[node name="MainContents" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 32
+
+[node name="NewButtonMargin" type="MarginContainer" parent="MainContents"]
+layout_mode = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+
+[node name="NewSelectionButton" type="Button" parent="MainContents/NewButtonMargin"]
+layout_mode = 2
+focus_mode = 0
+theme_override_font_sizes/font_size = 240
+text = "+"
+
+[node name="SelectionsMargin" type="MarginContainer" parent="MainContents"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_right = 30
+
+[node name="SelectionsScroller" type="ScrollContainer" parent="MainContents/SelectionsMargin"]
+layout_mode = 2
+
+[node name="SelectionHistory" type="VBoxContainer" parent="MainContents/SelectionsMargin/SelectionsScroller"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 16
+
+[connection signal="pressed" from="MainContents/NewButtonMargin/NewSelectionButton" to="." method="_on_new_selection_button_pressed"]

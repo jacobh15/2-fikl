@@ -1,0 +1,127 @@
+[gd_scene load_steps=9 format=3 uid="uid://dpea8vnvbfvhu"]
+
+[ext_resource type="LabelSettings" uid="uid://cb6xhosfnxffi" path="res://header.tres" id="1_8u2n0"]
+[ext_resource type="Script" uid="uid://cf0p4k7vmslex" path="res://Scripts/constraints.gd" id="1_15xlk"]
+[ext_resource type="StyleBox" uid="uid://8pqjd5ntdrxs" path="res://Styles/text_button_normal.tres" id="2_6pndu"]
+[ext_resource type="Theme" uid="uid://bhkvjdraqkwk6" path="res://text_button_theme.tres" id="2_afamt"]
+[ext_resource type="StyleBox" uid="uid://ddedinc12x8al" path="res://Styles/text_button_active.tres" id="3_15xlk"]
+[ext_resource type="PackedScene" uid="uid://miu18qm6af1r" path="res://Scenes/search_container.tscn" id="4_6pndu"]
+[ext_resource type="PackedScene" uid="uid://dpsq2sbwipui5" path="res://Scenes/constraint_type_popup.tscn" id="6_dyr76"]
+[ext_resource type="PackedScene" uid="uid://cdgn7frptj7kj" path="res://Scenes/confirm_delete_popup.tscn" id="8_qjuv3"]
+
+[node name="Constraints" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_15xlk")
+
+[node name="MainContents" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 32
+
+[node name="HeaderPanel" type="PanelContainer" parent="MainContents"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MainContents/HeaderPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 30
+
+[node name="Header" type="HBoxContainer" parent="MainContents/HeaderPanel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 21
+
+[node name="BackButton" type="Button" parent="MainContents/HeaderPanel/MarginContainer/Header"]
+visible = false
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("2_afamt")
+text = "<"
+
+[node name="Header" type="Label" parent="MainContents/HeaderPanel/MarginContainer/Header"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Constraints"
+label_settings = ExtResource("1_8u2n0")
+
+[node name="NewConstraintMargin" type="MarginContainer" parent="MainContents/HeaderPanel/MarginContainer/Header"]
+layout_mode = 2
+theme_override_constants/margin_right = 25
+
+[node name="NewConstraintButton" type="Button" parent="MainContents/HeaderPanel/MarginContainer/Header/NewConstraintMargin"]
+layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_color = Color(0.05882353, 0.30980393, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.96862745, 0.972549, 1)
+theme_override_colors/font_hover_color = Color(0.05882353, 0.30980393, 0, 1)
+theme_override_font_sizes/font_size = 224
+theme_override_styles/normal = ExtResource("2_6pndu")
+theme_override_styles/pressed = ExtResource("3_15xlk")
+theme_override_styles/hover = ExtResource("2_6pndu")
+text = "+"
+
+[node name="ConstraintsMargin" type="MarginContainer" parent="MainContents"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_right = 30
+
+[node name="ConstraintsContent" type="VBoxContainer" parent="MainContents/ConstraintsMargin"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="UseSelectedButton" type="Button" parent="MainContents/ConstraintsMargin/ConstraintsContent"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Use Selected"
+
+[node name="SearchContainer" parent="MainContents/ConstraintsMargin/ConstraintsContent" instance=ExtResource("4_6pndu")]
+layout_mode = 2
+
+[node name="ConstraintsScroller" type="ScrollContainer" parent="MainContents/ConstraintsMargin/ConstraintsContent"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Constraints" type="VBoxContainer" parent="MainContents/ConstraintsMargin/ConstraintsContent/ConstraintsScroller"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 16
+
+[node name="ConstraintTypePopup" parent="." instance=ExtResource("6_dyr76")]
+visible = false
+layout_mode = 1
+anchors_preset = 14
+anchor_left = 0.0
+anchor_right = 1.0
+offset_left = 0.0
+offset_top = -491.5
+offset_right = 0.0
+offset_bottom = 491.5
+theme_override_constants/margin_left = 130
+theme_override_constants/margin_right = 130
+
+[node name="ConfirmDeletePopup" parent="." instance=ExtResource("8_qjuv3")]
+layout_mode = 1
+offset_left = 0.0
+offset_top = -194.5
+offset_right = 0.0
+offset_bottom = 194.5
+
+[connection signal="pressed" from="MainContents/HeaderPanel/MarginContainer/Header/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="MainContents/HeaderPanel/MarginContainer/Header/NewConstraintMargin/NewConstraintButton" to="." method="_on_new_constraint_button_pressed"]
+[connection signal="pressed" from="MainContents/ConstraintsMargin/ConstraintsContent/UseSelectedButton" to="." method="_on_use_selected_button_pressed"]
+[connection signal="search_changed" from="MainContents/ConstraintsMargin/ConstraintsContent/SearchContainer" to="." method="_on_search_container_search_changed"]
+[connection signal="button_pressed" from="ConstraintTypePopup" to="." method="_on_constraint_type_popup_button_pressed"]
+[connection signal="no_pressed" from="ConfirmDeletePopup" to="." method="_on_confirm_delete_popup_no_pressed"]
+[connection signal="yes_pressed" from="ConfirmDeletePopup" to="." method="_on_confirm_delete_popup_yes_pressed"]

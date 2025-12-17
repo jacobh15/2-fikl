@@ -1,0 +1,53 @@
+[gd_scene load_steps=5 format=3 uid="uid://cnw2haws3wfm1"]
+
+[ext_resource type="Theme" uid="uid://r2ps60h61gx5" path="res://main_theme.tres" id="1_a3vy7"]
+[ext_resource type="StyleBox" uid="uid://cefx6c5omxj46" path="res://Styles/transparent_style.tres" id="2_s83o5"]
+[ext_resource type="Script" uid="uid://cigvkmfnaccbo" path="res://Scripts/autocomplete.gd" id="3_yhi4u"]
+[ext_resource type="Script" uid="uid://betmri15rsbcx" path="res://Scripts/autocomplete_line_edit.gd" id="4_s83o5"]
+
+[node name="Autocomplete" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_a3vy7")
+script = ExtResource("3_yhi4u")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.05882353, 0.30980393, 0, 1)
+
+[node name="Suggestion" type="LineEdit" parent="."]
+process_mode = 4
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.8745098, 0.8745098, 0.8745098, 0.5019608)
+theme_override_font_sizes/font_size = 48
+flat = true
+
+[node name="LineEdit" type="LineEdit" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_a3vy7")
+theme_override_styles/normal = ExtResource("2_s83o5")
+theme_override_styles/focus = ExtResource("2_s83o5")
+script = ExtResource("4_s83o5")
+
+[connection signal="text_changed" from="LineEdit" to="LineEdit" method="_on_text_changed"]
+[connection signal="text_submitted" from="LineEdit" to="LineEdit" method="_on_text_submitted"]
