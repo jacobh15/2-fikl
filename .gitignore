@@ -1,3 +1,14 @@
 # Godot 4+ specific ignores
 .godot/
 /android/
+*.DS_Store
+*.ipa
+*.pck
+*.xcarchive/
+*.xcframework/
+*.xcodeproj/
+2Fikl/
+*.plist
+*.log
+*.xcprivacy
+*.cfg
