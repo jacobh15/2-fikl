@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://ox21ed4m0tw0"]
+[gd_scene load_steps=7 format=3 uid="uid://ox21ed4m0tw0"]
 
 [ext_resource type="Theme" uid="uid://r2ps60h61gx5" path="res://main_theme.tres" id="1_qopqm"]
 [ext_resource type="Theme" uid="uid://bhkvjdraqkwk6" path="res://text_button_theme.tres" id="2_7x4rc"]
 [ext_resource type="Script" uid="uid://c3g6vtbjdtfry" path="res://Scripts/decision_editor.gd" id="2_wuhbq"]
 [ext_resource type="LabelSettings" uid="uid://cb6xhosfnxffi" path="res://header.tres" id="3_wuhbq"]
 [ext_resource type="StyleBox" uid="uid://b8kevjxltyj7d" path="res://Styles/decision_options_panel_style.tres" id="5_wuhbq"]
+[ext_resource type="Texture2D" uid="uid://dgmkckkjkv70a" path="res://Textures/Plus96.png" id="6_t3t71"]
 
 [node name="DecisionEditor" type="VBoxContainer"]
 anchors_preset = 15
@@ -90,10 +91,11 @@ layout_mode = 2
 
 [node name="AddOptionsButton" type="Button" parent="ContentMargin/Content/ContentMargin/OptionsPanel/OptionsContent"]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 focus_mode = 0
-theme = ExtResource("2_7x4rc")
 theme_override_font_sizes/font_size = 144
-text = "+"
+icon = ExtResource("6_t3t71")
 
 [node name="OptionsScroller" type="ScrollContainer" parent="ContentMargin/Content/ContentMargin/OptionsPanel/OptionsContent"]
 layout_mode = 2

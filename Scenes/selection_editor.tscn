@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://cp7cyfovupy74"]
+[gd_scene load_steps=8 format=3 uid="uid://cp7cyfovupy74"]
 
 [ext_resource type="Theme" uid="uid://r2ps60h61gx5" path="res://main_theme.tres" id="1_rachc"]
 [ext_resource type="Script" uid="uid://ciwmke0dpfgoe" path="res://Scripts/selection_editor.gd" id="2_rp03h"]
 [ext_resource type="Theme" uid="uid://bhkvjdraqkwk6" path="res://text_button_theme.tres" id="2_si02m"]
 [ext_resource type="LabelSettings" uid="uid://cb6xhosfnxffi" path="res://header.tres" id="3_rp03h"]
 [ext_resource type="StyleBox" uid="uid://b8kevjxltyj7d" path="res://Styles/decision_options_panel_style.tres" id="4_n10x8"]
+[ext_resource type="Texture2D" uid="uid://dgmkckkjkv70a" path="res://Textures/Plus96.png" id="6_n10x8"]
 [ext_resource type="PackedScene" uid="uid://w2qx2n1s01dq" path="res://Scenes/show_choice_popup.tscn" id="6_rp03h"]
 
 [node name="SelectionEditor" type="Control"]
@@ -106,10 +107,11 @@ layout_mode = 2
 
 [node name="AddConstrarintsButton" type="Button" parent="SelectionHistory/ContentMargin/Content/ContentMargin/ConstraintsPanel/ConstraintsContent"]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 focus_mode = 0
-theme = ExtResource("2_si02m")
 theme_override_font_sizes/font_size = 144
-text = "+"
+icon = ExtResource("6_n10x8")
 
 [node name="ConstraintsScroller" type="ScrollContainer" parent="SelectionHistory/ContentMargin/Content/ContentMargin/ConstraintsPanel/ConstraintsContent"]
 layout_mode = 2
