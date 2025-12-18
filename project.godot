@@ -30,9 +30,7 @@ Chooser="*res://Scripts/chooser.gd"
 
 window/size/viewport_width=1440
 window/size/viewport_height=2560
-window/size/mode=2
 window/energy_saving/keep_screen_on=false
-window/stretch/mode="viewport"
 window/handheld/orientation=1
 
 [input_devices]
@@ -42,4 +40,5 @@ pointing/emulate_touch_from_mouse=true
 [rendering]
 
 renderer/rendering_method="mobile"
+textures/vram_compression/import_etc2_astc=true
 environment/defaults/default_clear_color=Color(0.3137255, 0.31764707, 0.30980393, 1)
