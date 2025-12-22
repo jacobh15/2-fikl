@@ -5,11 +5,19 @@ signal option_selected(option)
 signal option_checked(option, toggled)
 signal option_preference_changed(option: Node, new_preference: float)
 
+var pressed = true
+
 
 func _gui_input(event: InputEvent) -> void:
-	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed():
-		accept_event()
-		option_selected.emit(self)
+	if event is InputEventScreenTouch:
+		if event.pressed:
+			pressed = true
+		elif pressed:
+			var test_rect = Rect2(Vector2.ZERO, get_rect().size);
+			if test_rect.has_point(event.position):
+				pressed = false
+				accept_event()
+				option_selected.emit(self)
 
 
 func set_option_name(option_name: String) -> void:

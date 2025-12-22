@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://5ii4odjs77y8" path="res://Scenes/delete_button.tscn" id="3_oh5tq"]
 
 [node name="Option" type="PanelContainer"]
+mouse_filter = 1
 theme_override_styles/panel = ExtResource("1_rtwqn")
 script = ExtResource("2_tx2dh")
 
@@ -20,6 +21,7 @@ layout_mode = 2
 visible = false
 layout_mode = 2
 focus_mode = 0
+mouse_filter = 1
 
 [node name="Data" type="VBoxContainer" parent="Margin/Elements"]
 layout_mode = 2
@@ -36,6 +38,7 @@ text = "Option name"
 
 [node name="Delete" parent="Margin/Elements/Data/Content" instance=ExtResource("3_oh5tq")]
 layout_mode = 2
+mouse_filter = 1
 
 [node name="PreferenceSelection" parent="Margin/Elements/Data" instance=ExtResource("2_hmytp")]
 layout_mode = 2

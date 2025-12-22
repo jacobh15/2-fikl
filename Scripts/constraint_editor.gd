@@ -5,11 +5,13 @@ signal go_back_after_editing(screen)
 signal go_back_after_discarding(screen)
 signal go_to_options_selector(screen)
 signal go_to_constraints_selector(screen)
+signal go_to_options_editor(screen)
 
 const OPTION = preload("res://Scenes/option.tscn")
 const CONSTRAINT = preload("res://Scenes/constraint.tscn")
 
 var constraint = null
+var edit_option = null
 var current_options = {}
 var current_constraints = []
 var current_screen = Enums.Screen.PREFERENCE_CONSTRAINT_EDITOR
@@ -88,10 +90,11 @@ func refresh_list():
 			var option = OPTION.instantiate()
 			option.set_option_name(option_name)
 			option.set_option_preference(current_options[option_name])
-			option.set_editable(true)
+			option.set_editable(false)
 			option.set_selection_mode(false)
 			option.deleted.connect(_on_option_deleted)
 			option.option_preference_changed.connect(_on_option_preference_changed)
+			option.option_selected.connect(_on_option_selected)
 			n_options.add_child(option)
 	elif current_screen == Enums.Screen.COMPOSITE_CONSTRAINT_EDITOR:
 		for constraint_name in current_constraints:
@@ -99,6 +102,12 @@ func refresh_list():
 			new_constraint.set_constraint_name(constraint_name)
 			new_constraint.deleted.connect(_on_constraint_deleted)
 			n_options.add_child(new_constraint)
+
+
+func _on_option_selected(option):
+	edit_option = option
+	visible = false
+	go_to_options_editor.emit(Enums.Screen.OPTION_EDITOR)
 
 
 func _on_option_preference_changed(option, new_preference):

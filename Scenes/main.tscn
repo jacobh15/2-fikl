@@ -77,7 +77,6 @@ size_flags_horizontal = 3
 focus_mode = 0
 toggle_mode = true
 button_pressed = true
-action_mode = 0
 button_group = ExtResource("10_fevyy")
 icon = ExtResource("12_fevyy")
 icon_alignment = 1
@@ -87,7 +86,6 @@ layout_mode = 2
 size_flags_horizontal = 3
 focus_mode = 0
 toggle_mode = true
-action_mode = 0
 button_group = ExtResource("10_fevyy")
 icon = ExtResource("13_hibaj")
 icon_alignment = 1
@@ -97,7 +95,6 @@ layout_mode = 2
 size_flags_horizontal = 3
 focus_mode = 0
 toggle_mode = true
-action_mode = 0
 button_group = ExtResource("10_fevyy")
 icon = ExtResource("14_pdsj5")
 icon_alignment = 1
@@ -107,7 +104,6 @@ layout_mode = 2
 size_flags_horizontal = 3
 focus_mode = 0
 toggle_mode = true
-action_mode = 0
 button_group = ExtResource("10_fevyy")
 icon = ExtResource("15_ee4r6")
 icon_alignment = 1
@@ -118,9 +114,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 focus_mode = 0
 toggle_mode = true
-action_mode = 0
 button_group = ExtResource("10_fevyy")
-text = "S"
 
 [node name="OptionEditor" parent="TabContainer" instance=ExtResource("12_fdnlq")]
 visible = false
@@ -158,6 +152,7 @@ layout_mode = 2
 [connection signal="go_back_after_discarding" from="TabContainer/ConstraintEditor" to="." method="_on_change_screen"]
 [connection signal="go_back_after_editing" from="TabContainer/ConstraintEditor" to="." method="_on_change_screen"]
 [connection signal="go_to_constraints_selector" from="TabContainer/ConstraintEditor" to="." method="_on_change_screen"]
+[connection signal="go_to_options_editor" from="TabContainer/ConstraintEditor" to="." method="_on_change_screen"]
 [connection signal="go_to_options_selector" from="TabContainer/ConstraintEditor" to="." method="_on_change_screen"]
 [connection signal="go_back" from="TabContainer/SelectionEditor" to="." method="_on_change_screen"]
 [connection signal="open_constraint_editor" from="TabContainer/SelectionEditor" to="." method="_on_change_screen"]
