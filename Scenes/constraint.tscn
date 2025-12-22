@@ -35,7 +35,6 @@ stretch_mode = 2
 
 [node name="Delete" parent="Margin/Content" instance=ExtResource("4_e78l3")]
 layout_mode = 2
-mouse_filter = 1
 
 [connection signal="toggled" from="Margin/Content/SelectedCheck" to="." method="_on_selected_check_toggled"]
 [connection signal="pressed" from="Margin/Content/Delete" to="." method="_on_delete_pressed"]

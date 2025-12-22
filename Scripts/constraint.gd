@@ -6,17 +6,24 @@ signal constraint_checked(constraint: Node, is_checked: bool)
 
 
 var type = null
+var pressed = true
+
+
+func _gui_input(event: InputEvent) -> void:
+	if event is InputEventScreenTouch:
+		if event.pressed:
+			pressed = true
+		elif pressed:
+			var test_rect = Rect2(Vector2.ZERO, get_rect().size);
+			if test_rect.has_point(event.position):
+				pressed = false
+				accept_event()
+				constraint_selected.emit(self)
 
 
 func _on_delete_pressed() -> void:
 	deleted.emit(self)
-
-
-func _gui_input(event: InputEvent) -> void:
-	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed():
-		accept_event()
-		constraint_selected.emit(self)
-
+	
 
 func set_constraint_name(constraint_name: String) -> void:
 	$Margin/Content/NameLabel.text = constraint_name

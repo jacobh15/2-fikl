@@ -3,11 +3,19 @@ extends PanelContainer
 signal deleted
 signal decision_selected(decision)
 
+var pressed = true
+
 
 func _gui_input(event: InputEvent) -> void:
-	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed():
-		accept_event()
-		decision_selected.emit(self)
+	if event is InputEventScreenTouch:
+		if event.pressed:
+			pressed = true
+		elif pressed:
+			var test_rect = Rect2(Vector2.ZERO, get_rect().size);
+			if test_rect.has_point(event.position):
+				pressed = false
+				accept_event()
+				decision_selected.emit(self)
 
 
 func set_decision_name(decision_name: String) -> void:

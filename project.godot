@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="2Fikl"
-config/description="An app for the indecisive. Create decisions, set preferences, add constraints, and let the app do the hard work of making your life decisions. I am not liable if you choose to act on a bad choice made on your behalf by this app."
+config/description="An app for the indecisive: create decisions, set preferences, add constraints, and let the app do the hard work of making your life choices. (I am not liable if you choose to act on a bad choice made on your behalf by this app)"
 config/version="2.0"
 run/main_scene="res://Scenes/main.tscn"
 config/features=PackedStringArray("4.5", "Mobile")
@@ -31,12 +31,12 @@ Chooser="*res://Scripts/chooser.gd"
 window/size/viewport_width=1440
 window/size/viewport_height=2560
 window/energy_saving/keep_screen_on=false
+window/stretch/mode="viewport"
 window/handheld/orientation=1
 
 [input_devices]
 
 pointing/emulate_touch_from_mouse=true
-pointing/emulate_mouse_from_touch=false
 
 [rendering]
 

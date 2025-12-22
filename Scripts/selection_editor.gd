@@ -112,3 +112,8 @@ func _on_show_choice_popup_done_clicked() -> void:
 	get_tree().paused = false
 	visible = false
 	go_back.emit(Enums.Screen.SELECTIONS)
+
+
+func _on_constraints_scroller_scroll_started() -> void:
+	for child in n_constraints.get_children():
+		child.pressed = false

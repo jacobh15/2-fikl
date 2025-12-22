@@ -219,3 +219,8 @@ func _on_add_options_button_pressed() -> void:
 		go_to_options_selector.emit(Enums.Screen.OPTIONS_SELECTOR)
 	elif current_screen == Enums.Screen.COMPOSITE_CONSTRAINT_EDITOR:
 		go_to_constraints_selector.emit(Enums.Screen.CONSTRAINTS_SELECTOR)
+
+
+func _on_options_scroller_scroll_started() -> void:
+	for child in n_options:
+		child.pressed = false
