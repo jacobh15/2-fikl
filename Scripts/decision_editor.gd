@@ -35,6 +35,7 @@ func set_half_resolution():
 	$ContentMargin/Content/ContentMargin.add_theme_constant_override("margin_right", 8)
 	$ContentMargin/Content/ContentMargin.add_theme_constant_override("margin_bottom", 3)
 	$ContentMargin/Content/ContentMargin/OptionsPanel/OptionsContent/AddOptionsButton.add_theme_font_size_override("font_size", 72)
+	$ContentMargin/Content/ContentMargin/OptionsPanel/OptionsContent/AddOptionsButton.icon = load("res://Textures/Plus48.png")
 	$ContentMargin/Content/ContentMargin/OptionsPanel/OptionsContent/OptionsScroller/Options.add_theme_constant_override("separation", 8)
 
 
