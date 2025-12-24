@@ -24,7 +24,6 @@ text = "Decision name"
 
 [node name="Delete" parent="Margin/Content" instance=ExtResource("3_jokqt")]
 layout_mode = 2
-mouse_filter = 1
 
 [node name="Share" type="Button" parent="Margin/Content"]
 visible = false

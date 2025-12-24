@@ -29,7 +29,7 @@ layout_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="MainContents/HeaderPanel"]
 layout_mode = 2
-theme_override_constants/margin_left = 30
+theme_override_constants/margin_left = 50
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 30
 
@@ -99,5 +99,6 @@ offset_bottom = 181.5
 [connection signal="pressed" from="MainContents/HeaderPanel/MarginContainer/Header/NewOptionMargin/NewOptionButton" to="." method="_on_new_option_button_pressed"]
 [connection signal="pressed" from="MainContents/OptionsMargin/OptionsContent/UseSelectedButton" to="." method="_on_use_selected_button_pressed"]
 [connection signal="search_changed" from="MainContents/OptionsMargin/OptionsContent/SearchContainer" to="." method="_on_search_container_search_changed"]
+[connection signal="scroll_started" from="MainContents/OptionsMargin/OptionsContent/OptionsScroller" to="." method="_on_options_scroller_scroll_started"]
 [connection signal="no_pressed" from="ConfirmDeletePopup" to="." method="_on_no_button_pressed"]
 [connection signal="yes_pressed" from="ConfirmDeletePopup" to="." method="_on_yes_button_pressed"]

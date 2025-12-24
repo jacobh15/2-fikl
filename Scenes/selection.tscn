@@ -37,7 +37,6 @@ text = "Choice"
 
 [node name="Delete" parent="ContentMargin/Data/ChoiceAndButtons" instance=ExtResource("4_7n71i")]
 layout_mode = 2
-mouse_filter = 1
 
 [node name="DecisionAndTime" type="HBoxContainer" parent="ContentMargin/Data"]
 layout_mode = 2

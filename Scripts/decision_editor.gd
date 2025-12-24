@@ -145,3 +145,8 @@ func _on_done_button_pressed() -> void:
 
 func _on_add_options_button_pressed() -> void:
 	go_to_options_selector.emit(Enums.Screen.OPTIONS_SELECTOR)
+
+
+func _on_options_scroller_scroll_started() -> void:
+	for child in n_options.get_children():
+		child.pressed = false

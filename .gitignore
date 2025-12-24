@@ -6,7 +6,6 @@
 *.pck
 *.xcarchive/
 *.xcframework/
-*.xcodeproj/
 2Fikl/
 *.plist
 *.log

@@ -139,3 +139,8 @@ func _on_back_button_pressed() -> void:
 func _on_use_selected_button_pressed() -> void:
 	exclude_options = {}
 	go_back.emit(Enums.Screen.LAST)
+
+
+func _on_options_scroller_scroll_started() -> void:
+	for child in n_options.get_children():
+		child.pressed = false

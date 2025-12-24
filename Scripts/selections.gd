@@ -61,3 +61,8 @@ func _on_selection_selected(selection):
 
 func _on_new_selection_button_pressed() -> void:
 	go_to_selection_editor.emit(Enums.Screen.SELECTION_EDITOR)
+
+
+func _on_selections_scroller_scroll_started() -> void:
+	for child in n_selections.get_children():
+		child.pressed = false

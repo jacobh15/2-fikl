@@ -15,7 +15,7 @@ layout_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="HeaderPanel"]
 layout_mode = 2
-theme_override_constants/margin_left = 15
+theme_override_constants/margin_left = 50
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 30
 
@@ -37,9 +37,9 @@ label_settings = ExtResource("3_y32po")
 
 [node name="ContentMargin" type="MarginContainer" parent="."]
 layout_mode = 2
-theme_override_constants/margin_left = 15
-theme_override_constants/margin_top = 15
-theme_override_constants/margin_right = 15
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
 
 [node name="Content" type="VBoxContainer" parent="ContentMargin"]
 layout_mode = 2

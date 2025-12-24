@@ -148,3 +148,8 @@ func _on_confirm_delete_popup_yes_pressed() -> void:
 		show_constraints()
 	else:
 		printerr("Something very bad happened")
+
+
+func _on_constraints_scroller_scroll_started() -> void:
+	for child in n_constraints.get_children():
+		child.pressed = false

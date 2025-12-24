@@ -70,3 +70,8 @@ func _on_new_decision_button_pressed() -> void:
 
 func _on_search_container_search_changed() -> void:
 	show_decisions()
+
+
+func _on_decisions_scroller_scroll_started() -> void:
+	for child in n_decisions.get_children():
+		child.pressed = false

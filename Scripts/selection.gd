@@ -4,6 +4,7 @@ signal deleted(selection)
 signal selection_selected(selection)
 
 var index = null
+var pressed = true
 
 
 func set_half_resolution():
@@ -14,9 +15,15 @@ func set_half_resolution():
 
 
 func _gui_input(event: InputEvent) -> void:
-	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed():
-		accept_event()
-		selection_selected.emit(self)
+	if event is InputEventScreenTouch:
+		if event.pressed:
+			pressed = true
+		elif pressed:
+			var test_rect = Rect2(Vector2.ZERO, get_rect().size);
+			if test_rect.has_point(event.position):
+				pressed = false
+				accept_event()
+				selection_selected.emit(self)
 
 
 func _on_delete_button_pressed() -> void:

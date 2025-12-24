@@ -29,7 +29,7 @@ layout_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="MainContents/HeaderPanel"]
 layout_mode = 2
-theme_override_constants/margin_left = 30
+theme_override_constants/margin_left = 50
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 30
 
@@ -84,3 +84,4 @@ theme_override_constants/separation = 16
 
 [connection signal="pressed" from="MainContents/HeaderPanel/MarginContainer/Header/NewDecisionMargin/NewDecisionButton" to="." method="_on_new_decision_button_pressed"]
 [connection signal="search_changed" from="MainContents/DecisionsMargin/Content/SearchContainer" to="." method="_on_search_container_search_changed"]
+[connection signal="scroll_started" from="MainContents/DecisionsMargin/Content/DecisionsScroller" to="." method="_on_decisions_scroller_scroll_started"]

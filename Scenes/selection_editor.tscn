@@ -32,7 +32,7 @@ layout_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="SelectionHistory/HeaderPanel"]
 layout_mode = 2
-theme_override_constants/margin_left = 15
+theme_override_constants/margin_left = 50
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 30
 
@@ -55,9 +55,9 @@ label_settings = ExtResource("3_rp03h")
 [node name="ContentMargin" type="MarginContainer" parent="SelectionHistory"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_constants/margin_left = 15
-theme_override_constants/margin_top = 15
-theme_override_constants/margin_right = 15
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
 
 [node name="Content" type="VBoxContainer" parent="SelectionHistory/ContentMargin"]
 layout_mode = 2
@@ -134,4 +134,5 @@ offset_bottom = 138.0
 [connection signal="pressed" from="SelectionHistory/ContentMargin/Content/DoneButton" to="." method="_on_done_button_pressed"]
 [connection signal="item_selected" from="SelectionHistory/ContentMargin/Content/DecisionButton" to="." method="_on_decision_button_item_selected"]
 [connection signal="pressed" from="SelectionHistory/ContentMargin/Content/ContentMargin/ConstraintsPanel/ConstraintsContent/AddConstrarintsButton" to="." method="_on_add_constrarints_button_pressed"]
+[connection signal="scroll_started" from="SelectionHistory/ContentMargin/Content/ContentMargin/ConstraintsPanel/ConstraintsContent/ConstraintsScroller" to="." method="_on_constraints_scroller_scroll_started"]
 [connection signal="done_clicked" from="ShowChoicePopup" to="." method="_on_show_choice_popup_done_clicked"]

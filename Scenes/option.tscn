@@ -21,7 +21,6 @@ layout_mode = 2
 visible = false
 layout_mode = 2
 focus_mode = 0
-mouse_filter = 1
 
 [node name="Data" type="VBoxContainer" parent="Margin/Elements"]
 layout_mode = 2
