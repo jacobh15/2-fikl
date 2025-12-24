@@ -40,6 +40,7 @@ color = Color(0.3137255, 0.31764707, 0.30980393, 1)
 
 [node name="TabContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
+theme_override_constants/separation = 8
 
 [node name="Tabs" type="Control" parent="TabContainer"]
 layout_mode = 2

@@ -6,7 +6,7 @@
 
 [resource]
 default_font = ExtResource("1_wqudw")
-default_font_size = 64
+default_font_size = 32
 /colors/Color = Color(0.05882353, 0.30980393, 0, 1)
 Button/styles/hover = ExtResource("1_hr2ms")
 Button/styles/normal = ExtResource("1_hr2ms")

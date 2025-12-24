@@ -38,7 +38,6 @@ text = "Option name"
 
 [node name="Delete" parent="Margin/Elements/Data/Content" instance=ExtResource("3_oh5tq")]
 layout_mode = 2
-mouse_filter = 1
 
 [node name="PreferenceSelection" parent="Margin/Elements/Data" instance=ExtResource("2_hmytp")]
 layout_mode = 2

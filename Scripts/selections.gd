@@ -6,10 +6,23 @@ const SELECTION = preload("res://Scenes/selection.tscn")
 
 var n_selections = null
 var copy_selection = null
+var is_half_resolution = false
 
 func _ready():
 	n_selections = $MainContents/SelectionsMargin/SelectionsScroller/SelectionHistory
 	show_selections()
+
+
+func set_half_resolution():
+	is_half_resolution = true
+	$MainContents.add_theme_constant_override("separation", 16)
+	$MainContents/NewButtonMargin.add_theme_constant_override("margin_left", 15)
+	$MainContents/NewButtonMargin.add_theme_constant_override("margin_top", 15)
+	$MainContents/NewButtonMargin.add_theme_constant_override("margin_right", 15)
+	$MainContents/NewButtonMargin/NewSelectionButton.add_theme_font_size_override("font_size", 120)
+	$MainContents/SelectionsMargin.add_theme_constant_override("margin_left", 15)
+	$MainContents/SelectionsMargin.add_theme_constant_override("margin_right", 15)
+	$MainContents/SelectionsMargin/SelectionsScroller/SelectionHistory.add_theme_constant_override("separation", 8)
 
 
 func open():
@@ -31,6 +44,8 @@ func show_selections():
 		new_selection.set_time(selection["time"])
 		new_selection.selection_selected.connect(_on_selection_selected)
 		new_selection.deleted.connect(_on_selection_deleted)
+		if is_half_resolution:
+			new_selection.set_half_resolution()
 		n_selections.add_child(new_selection)
 
 

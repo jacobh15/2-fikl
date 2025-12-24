@@ -6,6 +6,13 @@ signal selection_selected(selection)
 var index = null
 
 
+func set_half_resolution():
+	$ContentMargin/Data/ChoiceAndButtons/Delete.set_half_resolution()
+	$ContentMargin/Data/ChoiceAndButtons/ChoiceLabel.theme = load("res://main_theme_half.tres")
+	$ContentMargin/Data/DecisionAndTime/DecisionLabel.add_theme_font_size_override("font_size", 32)
+	$ContentMargin/Data/DecisionAndTime/TimeLabel.add_theme_font_size_override("font_size", 24)
+
+
 func _gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed():
 		accept_event()

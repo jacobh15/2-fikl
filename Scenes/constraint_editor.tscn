@@ -27,7 +27,7 @@ theme_override_constants/margin_right = 30
 
 [node name="Header" type="HBoxContainer" parent="HeaderPanel/MarginContainer"]
 layout_mode = 2
-theme_override_constants/separation = 21
+theme_override_constants/separation = 20
 
 [node name="BackButton" type="Button" parent="HeaderPanel/MarginContainer/Header"]
 layout_mode = 2
@@ -104,6 +104,7 @@ size_flags_vertical = 3
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme_override_constants/separation = 16
 
 [connection signal="pressed" from="HeaderPanel/MarginContainer/Header/BackButton" to="." method="_on_back_button_pressed"]
 [connection signal="pressed" from="ContentMargin/Content/DoneButton" to="." method="_on_done_button_pressed"]

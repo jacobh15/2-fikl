@@ -7,6 +7,21 @@ signal go_back_after_discarding(screen)
 var option = null
 var constraint = null
 
+func set_half_resolution():
+	theme = load("res://main_theme_half.tres")
+	$HeaderPanel/MarginContainer.add_theme_constant_override("margin_left", 8)
+	$HeaderPanel/MarginContainer.add_theme_constant_override("margin_top", 5)
+	$HeaderPanel/MarginContainer.add_theme_constant_override("margin_right", 15)
+	$HeaderPanel/MarginContainer/Header.add_theme_constant_override("separation", 10)
+	$HeaderPanel/MarginContainer/Header/BackButton.add_theme_font_size_override("font_size", 112)
+	$HeaderPanel/MarginContainer/Header/Header.label_settings = load("res://header_half.tres")
+	$ContentMargin.add_theme_constant_override("margin_left", 8)
+	$ContentMargin.add_theme_constant_override("margin_top", 8)
+	$ContentMargin.add_theme_constant_override("margin_right", 8)
+	$ContentMargin/Content.add_theme_constant_override("separation", 15)
+	$ContentMargin/Content/PreferenceSelection.set_half_resolution()
+
+
 func open(edit_option, edit_constraint=null):
 	visible = true
 	constraint = edit_constraint

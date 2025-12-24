@@ -12,12 +12,34 @@ var decision_index = {}
 var n_constraints = null
 var n_decision = null
 var n_done = null
+var is_half_resolution = false
 
 
 func _ready():
 	n_constraints = $SelectionHistory/ContentMargin/Content/ContentMargin/ConstraintsPanel/ConstraintsContent/ConstraintsScroller/Constraints
 	n_decision = $SelectionHistory/ContentMargin/Content/DecisionButton
 	n_done = $SelectionHistory/ContentMargin/Content/DoneButton
+
+
+func set_half_resolution():
+	is_half_resolution = true
+	theme = load("res://main_theme_half.tres")
+	$SelectionHistory/HeaderPanel/MarginContainer.add_theme_constant_override("margin_left", 8)
+	$SelectionHistory/HeaderPanel/MarginContainer.add_theme_constant_override("margin_top", 5)
+	$SelectionHistory/HeaderPanel/MarginContainer.add_theme_constant_override("margin_right", 15)
+	$SelectionHistory/HeaderPanel/MarginContainer/Header.add_theme_constant_override("separation", 10)
+	$SelectionHistory/HeaderPanel/MarginContainer/Header/BackButton.add_theme_font_size_override("font_size", 112)
+	$SelectionHistory/HeaderPanel/MarginContainer/Header/Header.label_settings = load("res://header_half.tres")
+	$SelectionHistory/ContentMargin.add_theme_constant_override("margin_left", 8)
+	$SelectionHistory/ContentMargin.add_theme_constant_override("margin_top", 8)
+	$SelectionHistory/ContentMargin.add_theme_constant_override("margin_right", 8)
+	$SelectionHistory/ContentMargin/Content.add_theme_constant_override("separation", 15)
+	$SelectionHistory/ContentMargin/Content/ContentMargin.add_theme_constant_override("margin_left", 8)
+	$SelectionHistory/ContentMargin/Content/ContentMargin.add_theme_constant_override("margin_top", 3)
+	$SelectionHistory/ContentMargin/Content/ContentMargin.add_theme_constant_override("margin_right", 8)
+	$SelectionHistory/ContentMargin/Content/ContentMargin.add_theme_constant_override("margin_bottom", 3)
+	$SelectionHistory/ContentMargin/Content/ContentMargin/ConstraintsPanel/ConstraintsContent/AddConstrarintsButton.add_theme_font_size_override("font_size", 72)
+	$SelectionHistory/ContentMargin/Content/ContentMargin/ConstraintsPanel/ConstraintsContent/ConstraintsScroller/Constraints.add_theme_constant_override("separation", 8)
 
 
 func check_validity():
@@ -65,6 +87,8 @@ func show_constraints():
 		new_constraint.set_selection_mode(false)
 		new_constraint.deleted.connect(_on_constraint_deleted)
 		new_constraint.constraint_selected.connect(_on_constraint_selected)
+		if is_half_resolution:
+			new_constraint.set_half_resolution()
 		n_constraints.add_child(new_constraint)
 
 

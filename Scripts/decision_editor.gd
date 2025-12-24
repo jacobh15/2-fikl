@@ -11,9 +11,31 @@ var decision = null
 var current_options = []
 
 var n_options = null
+var is_half_resolution = false
 
 func _ready():
 	n_options = $ContentMargin/Content/ContentMargin/OptionsPanel/OptionsContent/OptionsScroller/Options
+
+
+func set_half_resolution():
+	is_half_resolution = true
+	theme = load("res://main_theme_half.tres")
+	$HeaderPanel/MarginContainer.add_theme_constant_override("margin_left", 8)
+	$HeaderPanel/MarginContainer.add_theme_constant_override("margin_top", 5)
+	$HeaderPanel/MarginContainer.add_theme_constant_override("margin_right", 15)
+	$HeaderPanel/MarginContainer/Header.add_theme_constant_override("separation", 10)
+	$HeaderPanel/MarginContainer/Header/BackButton.add_theme_font_size_override("font_size", 112)
+	$HeaderPanel/MarginContainer/Header/Header.label_settings = load("res://header_half.tres")
+	$ContentMargin/Content/ContentMargin.add_theme_constant_override("margin_left", 8)
+	$ContentMargin/Content/ContentMargin.add_theme_constant_override("margin_top", 8)
+	$ContentMargin/Content/ContentMargin.add_theme_constant_override("margin_right", 8)
+	$ContentMargin/Content.add_theme_constant_override("separation", 15)
+	$ContentMargin/Content/ContentMargin.add_theme_constant_override("margin_left", 8)
+	$ContentMargin/Content/ContentMargin.add_theme_constant_override("margin_top", 3)
+	$ContentMargin/Content/ContentMargin.add_theme_constant_override("margin_right", 8)
+	$ContentMargin/Content/ContentMargin.add_theme_constant_override("margin_bottom", 3)
+	$ContentMargin/Content/ContentMargin/OptionsPanel/OptionsContent/AddOptionsButton.add_theme_font_size_override("font_size", 72)
+	$ContentMargin/Content/ContentMargin/OptionsPanel/OptionsContent/OptionsScroller/Options.add_theme_constant_override("separation", 8)
 
 
 func check_validity():
@@ -63,6 +85,8 @@ func show_options():
 		option.set_editable(false)
 		option.set_selection_mode(false)
 		option.deleted.connect(_on_option_deleted)
+		if is_half_resolution:
+			option.set_half_resolution()
 		n_options.add_child(option)
 
 

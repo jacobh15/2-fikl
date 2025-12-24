@@ -4,6 +4,10 @@ signal deleted
 signal decision_selected(decision)
 
 
+func set_half_resolution():
+	$Margin/Content/Delete.set_half_resolution()
+
+
 func _gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed():
 		accept_event()

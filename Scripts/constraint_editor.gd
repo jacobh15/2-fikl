@@ -17,9 +17,31 @@ var current_constraints = []
 var current_screen = Enums.Screen.PREFERENCE_CONSTRAINT_EDITOR
 
 var n_options = null
+var is_half_resolution = false
 
 func _ready():
 	n_options = $ContentMargin/Content/ContentMargin/OptionsPanel/OptionsContent/OptionsScroller/Options
+
+
+func set_half_resolution():
+	theme = load("res://main_theme_half.tres")
+	$HeaderPanel/MarginContainer.add_theme_constant_override("margin_left", 8)
+	$HeaderPanel/MarginContainer.add_theme_constant_override("margin_top", 5)
+	$HeaderPanel/MarginContainer.add_theme_constant_override("margin_right", 15)
+	$HeaderPanel/MarginContainer/Header.add_theme_constant_override("separation", 10)
+	$HeaderPanel/MarginContainer/Header/BackButton.add_theme_font_size_override("font_size", 112)
+	$HeaderPanel/MarginContainer/Header/Header.label_settings = load("res://header_half.tres")
+	$ContentMargin.add_theme_constant_override("margin_left", 8)
+	$ContentMargin.add_theme_constant_override("margin_top", 8)
+	$ContentMargin.add_theme_constant_override("margin_right", 8)
+	$ContentMargin/Content.add_theme_constant_override("separation", 10)
+	$ContentMargin/Content/ContentMargin.add_theme_constant_override("margin_left", 8)
+	$ContentMargin/Content/ContentMargin.add_theme_constant_override("margin_top", 3)
+	$ContentMargin/Content/ContentMargin.add_theme_constant_override("margin_right", 8)
+	$ContentMargin/Content/ContentMargin.add_theme_constant_override("margin_bottom", 3)
+	$ContentMargin/Content/ContentMargin/OptionsPanel/OptionsContent/AddOptionsButton.add_theme_font_size_override("font_size", 72)
+	$ContentMargin/Content/ContentMargin/OptionsPanel/OptionsContent/OptionsScroller/Options.add_theme_constant_override("separation", 8)
+	is_half_resolution = true
 
 
 func check_validity():
@@ -95,12 +117,16 @@ func refresh_list():
 			option.deleted.connect(_on_option_deleted)
 			option.option_preference_changed.connect(_on_option_preference_changed)
 			option.option_selected.connect(_on_option_selected)
+			if is_half_resolution:
+				option.set_half_resolution()
 			n_options.add_child(option)
 	elif current_screen == Enums.Screen.COMPOSITE_CONSTRAINT_EDITOR:
 		for constraint_name in current_constraints:
 			var new_constraint = CONSTRAINT.instantiate()
 			new_constraint.set_constraint_name(constraint_name)
 			new_constraint.deleted.connect(_on_constraint_deleted)
+			if is_half_resolution:
+				new_constraint.set_half_resolution()
 			n_options.add_child(new_constraint)
 
 

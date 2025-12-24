@@ -12,10 +12,30 @@ var exclude_options = {}
 
 var n_options = null
 var n_search = null
+var is_half_resolution = false
 
 func _ready():
 	n_options = $MainContents/OptionsMargin/OptionsContent/OptionsScroller/Options
 	n_search = $MainContents/OptionsMargin/OptionsContent/SearchContainer
+
+
+func set_half_resolution():
+	is_half_resolution = true
+	$MainContents.add_theme_constant_override("separation", 16)
+	$MainContents/HeaderPanel/MarginContainer.add_theme_constant_override("margin_left", 15)
+	$MainContents/HeaderPanel/MarginContainer.add_theme_constant_override("margin_top", 10)
+	$MainContents/HeaderPanel/MarginContainer.add_theme_constant_override("margin_right", 15)
+	$MainContents/HeaderPanel/MarginContainer/Header.add_theme_constant_override("separation", 10)
+	$MainContents/HeaderPanel/MarginContainer/Header/BackButton.add_theme_font_size_override("font_size", 112)
+	$MainContents/HeaderPanel/MarginContainer/Header/Header.label_settings = load("res://header_half.tres")
+	$MainContents/HeaderPanel/MarginContainer/Header/NewOptionMargin.add_theme_constant_override("margin_right", 12)
+	$MainContents/HeaderPanel/MarginContainer/Header/NewOptionMargin/NewOptionButton.add_theme_font_size_override("font_size", 112)
+	$MainContents/OptionsMargin.add_theme_constant_override("margin_left", 15)
+	$MainContents/OptionsMargin.add_theme_constant_override("margin_right", 15)
+	$MainContents/OptionsMargin/OptionsContent.add_theme_constant_override("separation", 8)
+	$MainContents/OptionsMargin/OptionsContent/OptionsScroller/Options.add_theme_constant_override("separation", 8)
+	$ConfirmDeletePopup.set_half_resolution()
+	$MainContents/OptionsMargin/OptionsContent/SearchContainer.set_half_resolution()
 
 
 func open(in_selection_mode=false):
@@ -51,6 +71,9 @@ func show_options():
 		new_option.deleted.connect(_on_option_deleted)
 		new_option.option_selected.connect(_on_option_selected)
 		new_option.option_checked.connect(_on_option_checked)
+		
+		if is_half_resolution:
+			new_option.set_half_resolution()
 		
 		if selection_mode:
 			if option_name in selected_options:

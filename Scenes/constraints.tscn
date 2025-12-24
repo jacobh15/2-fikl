@@ -38,7 +38,7 @@ theme_override_constants/margin_right = 30
 
 [node name="Header" type="HBoxContainer" parent="MainContents/HeaderPanel/MarginContainer"]
 layout_mode = 2
-theme_override_constants/separation = 21
+theme_override_constants/separation = 20
 
 [node name="BackButton" type="Button" parent="MainContents/HeaderPanel/MarginContainer/Header"]
 visible = false
@@ -101,13 +101,6 @@ theme_override_constants/separation = 16
 [node name="ConstraintTypePopup" parent="." instance=ExtResource("6_dyr76")]
 visible = false
 layout_mode = 1
-anchors_preset = 14
-anchor_left = 0.0
-anchor_right = 1.0
-offset_left = 0.0
-offset_top = -491.5
-offset_right = 0.0
-offset_bottom = 491.5
 theme_override_constants/margin_left = 130
 theme_override_constants/margin_right = 130
 

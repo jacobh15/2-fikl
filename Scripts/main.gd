@@ -27,6 +27,21 @@ func _ready() -> void:
 	add_theme_constant_override("margin_left", left)
 	add_theme_constant_override("margin_bottom", bottom)
 	add_theme_constant_override("margin_right", right)
+	
+	print_debug(window_size.x)
+	if window_size.x < 1000:
+		set_half_resolution()
+		print_debug("Setting half resolution")
+
+
+func set_half_resolution():
+	$TabContainer.add_theme_constant_override("separation", 4)
+	$TabContainer/Tabs.set_half_resolution()
+	$TabContainer/TabBar.set_half_resolution()
+	$TabContainer/OptionEditor.set_half_resolution()
+	$TabContainer/DecisionEditor.set_half_resolution()
+	$TabContainer/ConstraintEditor.set_half_resolution()
+	$TabContainer/SelectionEditor.set_half_resolution()
 
 
 func _on_change_screen(screen: Enums.Screen) -> void:

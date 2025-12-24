@@ -37,3 +37,12 @@ func _on_tab_bar_change_tab(tab_name) -> void:
 		change_screen.emit(Enums.Screen.SETTINGS)
 	else:
 		printerr("Attempt to switch to invalid tab")
+
+
+func set_half_resolution():
+	self.theme = load("res://main_theme_half.tres")
+	$Selections.set_half_resolution()
+	$Selections.show_selections()
+	$Decisions.set_half_resolution()
+	$Options.set_half_resolution()
+	$Constraints.set_half_resolution()

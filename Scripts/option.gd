@@ -8,6 +8,11 @@ signal option_preference_changed(option: Node, new_preference: float)
 var pressed = true
 
 
+func set_half_resolution():
+	$Margin/Elements/Data/Content/Delete.set_half_resolution()
+	$Margin/Elements/Data/PreferenceSelection.set_half_resolution()
+
+
 func _gui_input(event: InputEvent) -> void:
 	if event is InputEventScreenTouch:
 		if event.pressed:

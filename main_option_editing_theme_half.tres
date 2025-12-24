@@ -1,0 +1,31 @@
+[gd_resource type="Theme" load_steps=9 format=3 uid="uid://creroova5w6o5"]
+
+[ext_resource type="StyleBox" uid="uid://b354hvbi4xe3f" path="res://Styles/main_widget_disabled.tres" id="1_7l2yv"]
+[ext_resource type="StyleBox" uid="uid://btuvqihqt1cca" path="res://Styles/main_widget_normal.tres" id="2_odulc"]
+[ext_resource type="StyleBox" uid="uid://re1kfxr85xol" path="res://Styles/main_widget_active.tres" id="3_rcg7a"]
+[ext_resource type="Texture2D" uid="uid://dx7kbtp3vibb3" path="res://Textures/Grabber32.png" id="4_4x131"]
+[ext_resource type="StyleBox" uid="uid://cqorugr6xammv" path="res://Styles/slider_style_selected_half.tres" id="5_7l2yv"]
+[ext_resource type="StyleBox" uid="uid://p1jjghg7un10" path="res://Styles/slider_style_half.tres" id="6_odulc"]
+[ext_resource type="FontFile" uid="uid://c4e8e4vfigf0l" path="res://Fonts/Unkempt-Regular.ttf" id="8_14o88"]
+[ext_resource type="StyleBox" uid="uid://c2f1tq35e34m6" path="res://Styles/header_panel_style.tres" id="9_3bmq5"]
+
+[resource]
+default_font = ExtResource("8_14o88")
+default_font_size = 48
+Button/styles/disabled = ExtResource("1_7l2yv")
+Button/styles/hover = ExtResource("2_odulc")
+Button/styles/normal = ExtResource("2_odulc")
+Button/styles/pressed = ExtResource("3_rcg7a")
+HSlider/icons/grabber = ExtResource("4_4x131")
+HSlider/icons/grabber_disabled = null
+HSlider/icons/grabber_highlight = ExtResource("4_4x131")
+HSlider/styles/grabber_area = ExtResource("5_7l2yv")
+HSlider/styles/grabber_area_highlight = ExtResource("5_7l2yv")
+HSlider/styles/slider = ExtResource("6_odulc")
+Label/colors/font_color = Color(0.53333336, 0.83137256, 0.59607846, 1)
+Label/font_sizes/font_size = 32
+Label/fonts/font = ExtResource("8_14o88")
+LineEdit/colors/font_color = Color(1, 0.96862745, 0.972549, 1)
+LineEdit/styles/focus = ExtResource("2_odulc")
+LineEdit/styles/normal = ExtResource("2_odulc")
+PanelContainer/styles/panel = ExtResource("9_3bmq5")

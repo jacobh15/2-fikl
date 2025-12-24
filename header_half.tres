@@ -1,0 +1,8 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://cuddxof0i8b1j"]
+
+[ext_resource type="FontFile" uid="uid://xs4i0gfek07a" path="res://Fonts/Unkempt-Bold.ttf" id="1_10067"]
+
+[resource]
+font = ExtResource("1_10067")
+font_size = 72
+font_color = Color(0.7372549, 0.42352942, 0.14509805, 1)

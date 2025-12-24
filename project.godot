@@ -12,7 +12,7 @@ config_version=5
 
 config/name="2Fikl"
 config/description="An app for the indecisive. Create decisions, set preferences, add constraints, and let the app do the hard work of making your life decisions. I am not liable if you choose to act on a bad choice made on your behalf by this app."
-config/version="2.0"
+config/version="1.0"
 run/main_scene="res://Scenes/main.tscn"
 config/features=PackedStringArray("4.5", "Mobile")
 boot_splash/bg_color=Color(0.05882353, 0.30980393, 0, 1)
@@ -28,9 +28,10 @@ Chooser="*res://Scripts/chooser.gd"
 
 [display]
 
-window/size/viewport_width=1440
-window/size/viewport_height=2560
+window/size/viewport_width=750
+window/size/viewport_height=1334
 window/energy_saving/keep_screen_on=false
+window/stretch/mode="viewport"
 window/handheld/orientation=1
 
 [input_devices]

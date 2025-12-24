@@ -14,11 +14,32 @@ var exclude_constraints = {}
 
 var n_constraints = null
 var n_search = null
+var is_half_resolution = false
 
 func _ready():
 	n_constraints = $MainContents/ConstraintsMargin/ConstraintsContent/ConstraintsScroller/Constraints
 	n_search = $MainContents/ConstraintsMargin/ConstraintsContent/SearchContainer
 	$ConfirmDeletePopup.set_message_text("Constraint is being used as a sub-constraint--delete anyway?")
+
+
+func set_half_resolution():
+	is_half_resolution = true
+	$MainContents.add_theme_constant_override("separation", 16)
+	$MainContents/HeaderPanel/MarginContainer.add_theme_constant_override("margin_left", 15)
+	$MainContents/HeaderPanel/MarginContainer.add_theme_constant_override("margin_top", 10)
+	$MainContents/HeaderPanel/MarginContainer.add_theme_constant_override("margin_right", 15)
+	$MainContents/HeaderPanel/MarginContainer/Header.add_theme_constant_override("separation", 10)
+	$MainContents/HeaderPanel/MarginContainer/Header/BackButton.add_theme_font_size_override("font_size", 112)
+	$MainContents/HeaderPanel/MarginContainer/Header/Header.label_settings = load("res://header_half.tres")
+	$MainContents/HeaderPanel/MarginContainer/Header/NewConstraintMargin.add_theme_constant_override("margin_right", 12)
+	$MainContents/HeaderPanel/MarginContainer/Header/NewConstraintMargin/NewConstraintButton.add_theme_font_size_override("font_size", 112)
+	$MainContents/ConstraintsMargin.add_theme_constant_override("margin_left", 15)
+	$MainContents/ConstraintsMargin.add_theme_constant_override("margin_right", 15)
+	$MainContents/ConstraintsMargin/ConstraintsContent.add_theme_constant_override("separation", 8)
+	$MainContents/ConstraintsMargin/ConstraintsContent/ConstraintsScroller/Constraints.add_theme_constant_override("separation", 8)
+	$ConstraintTypePopup.set_half_resolution()
+	$ConfirmDeletePopup.set_half_resolution()
+	$MainContents/ConstraintsMargin/ConstraintsContent/SearchContainer.set_half_resolution()
 
 
 func open(in_selection_mode=false, edit_composite=true):
@@ -56,6 +77,8 @@ func show_constraints():
 		new_constraint.constraint_checked.connect(_on_constraint_checked)
 		new_constraint.deleted.connect(_on_constraint_deleted)
 		new_constraint.constraint_selected.connect(_on_constraint_selected)
+		if is_half_resolution:
+			new_constraint.set_half_resolution()
 		n_constraints.add_child(new_constraint)
 
 

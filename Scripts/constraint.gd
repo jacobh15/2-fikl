@@ -7,6 +7,10 @@ signal constraint_checked(constraint: Node, is_checked: bool)
 
 var type = null
 
+func set_half_resolution():
+	$Margin/Content/TypeTexture.texture = load("res://Textures/Boxes48.png")
+	$Margin/Content/Delete.set_half_resolution()
+
 
 func _on_delete_pressed() -> void:
 	deleted.emit(self)
