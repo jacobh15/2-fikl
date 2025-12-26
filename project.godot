@@ -31,7 +31,6 @@ Chooser="*res://Scripts/chooser.gd"
 window/size/viewport_width=1250
 window/size/viewport_height=2600
 window/energy_saving/keep_screen_on=false
-window/stretch/mode="viewport"
 window/handheld/orientation=1
 
 [input_devices]
