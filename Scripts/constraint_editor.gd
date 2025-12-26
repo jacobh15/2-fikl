@@ -249,5 +249,5 @@ func _on_add_options_button_pressed() -> void:
 
 
 func _on_options_scroller_scroll_started() -> void:
-	for child in n_options:
+	for child in n_options.get_children():
 		child.pressed = false

@@ -5,7 +5,7 @@ signal go_back_after_editing(screen)
 signal go_back_after_discarding(screen)
 
 var option = null
-var constraint = null
+var constraint_preferences = null
 
 func set_half_resolution():
 	theme = load("res://main_theme_half.tres")
@@ -22,9 +22,9 @@ func set_half_resolution():
 	$ContentMargin/Content/PreferenceSelection.set_half_resolution()
 
 
-func open(edit_option, edit_constraint=null):
+func open(edit_option, edit_constraint_preferences=null):
 	visible = true
-	constraint = edit_constraint
+	constraint_preferences = edit_constraint_preferences
 	option = edit_option
 	if edit_option == null:
 		$ContentMargin/Content/NameEditor.text = ""
@@ -35,7 +35,7 @@ func open(edit_option, edit_constraint=null):
 		$ContentMargin/Content/MessageLabel.text = ""
 		$ContentMargin/Content/DoneButton.text = "Tap to create"
 		$HeaderPanel/MarginContainer/Header/Header.text = "New Option"
-	elif edit_constraint == null:
+	elif constraint_preferences == null:
 		$ContentMargin/Content/NameEditor.text = option.get_option_name()
 		$ContentMargin/Content/NameEditor.editable = true
 		$ContentMargin/Content/NameEditor.focus_mode = FocusMode.FOCUS_ALL
@@ -78,7 +78,7 @@ func _on_done_button_pressed() -> void:
 	var option_name = $ContentMargin/Content/NameEditor.text
 	if option_name == "":
 		$ContentMargin/Content/MessageLabel.text = "Please enter a name"
-	elif constraint == null and option_name in IO.options:
+	elif constraint_preferences == null and option_name in IO.options:
 		$ContentMargin/Content/MessageLabel.text = "Must use a unique name"
 	
 	var option_pref = $ContentMargin/Content/PreferenceSelection/SliderMargin/PreferenceSlider.value
@@ -91,17 +91,13 @@ func _on_done_button_pressed() -> void:
 		else:
 			$ContentMargin/Content/MessageLabel.text = "Something bad happened!"
 	else:
-		if constraint == null:
+		if constraint_preferences == null:
 			if IO.update_option(option.get_option_name(), option_name, option_pref):
 				visible = false
 				go_back_after_editing.emit(Enums.Screen.LAST)
 			else:
 				$ContentMargin/Content/MessageLabel.text = "Something bad happened!"
 		else:
-			var old_options = IO.constraints[constraint]["options"]
-			old_options[option.get_option_name()] = option_pref
-			if IO.update_preference_constraint(constraint, constraint, old_options):
-				visible = false
-				go_back_after_editing.emit(Enums.Screen.LAST)
-			else:
-				$ContentMargin/Content/MessageLabel.text = "Something bad happened!"
+			constraint_preferences[option.get_option_name()] = option_pref
+			visible = false
+			go_back_after_editing.emit(Enums.Screen.LAST)

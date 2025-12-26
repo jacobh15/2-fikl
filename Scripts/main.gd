@@ -73,7 +73,7 @@ func _on_change_screen(screen: Enums.Screen) -> void:
 		$TabContainer/Tabs.visible = false
 		$TabContainer/TabBar.visible = false
 		if current_screen == Enums.Screen.PREFERENCE_CONSTRAINT_EDITOR:
-			$TabContainer/OptionEditor.open($TabContainer/ConstraintEditor.edit_option, $TabContainer/ConstraintEditor.constraint)
+			$TabContainer/OptionEditor.open($TabContainer/ConstraintEditor.edit_option, $TabContainer/ConstraintEditor.current_options)
 		else:
 			$TabContainer/OptionEditor.open($TabContainer/Tabs/Options.edit_option)
 	elif screen == Enums.Screen.OPTIONS:
@@ -167,7 +167,9 @@ func _on_change_screen(screen: Enums.Screen) -> void:
 			persist = true
 			$TabContainer/ConstraintEditor.add_new_options($TabContainer/Tabs/Options.selected_options)
 			$TabContainer/Tabs/Options.selected_options = {}
-			
+		elif current_screen == Enums.Screen.OPTION_EDITOR:
+			persist = true
+		
 		$TabContainer/Tabs.visible = false
 		$TabContainer/TabBar.visible = false
 		$TabContainer/ConstraintEditor.open($TabContainer/Tabs/Constraints.edit_constraint, screen, persist)
