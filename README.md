@@ -1,0 +1,3 @@
+# 2Fikl
+
+2Fikl is the (unofficial) sequel to my previous, and now defunct, app Fikl. It generalizes the framework of Fikl to allow for randomly making many different but related decisions. First, you create options and assign a preference level to them. Second, you create a decision, which is a group of potential options to select from, weighted according to their preference levels. Third, create constraints, which add modifiers to option preference levels, allowing you to define different versions of the same decisions modularly. Fourth, select a decision and a set of constraints, and let the random number generator choose an option.
